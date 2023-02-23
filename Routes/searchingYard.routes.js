@@ -6,7 +6,8 @@ const SearchingYardRouter = express.Router()
 SearchingYardRouter.get('/get', async (req, res) => {
   try {
     const user = await SearchingYardModel.find()
-    res.status(200).send(user)
+
+    res.status(200).send(user.find({}).sort({date:1}))
   } catch (err) {
     res.status(500).send('errer aa gya')
   }
